@@ -35,7 +35,7 @@ class _WeatherState extends State<weather> {
   void _setText() {
     setState(() {
       cityname = titleController.text;
-      weather_cond = "sunny";
+      weather_cond = "Sunny";
       temp = Random().nextInt(16) + 15;
     });
   }
@@ -63,7 +63,7 @@ class _WeatherState extends State<weather> {
                   child: const Text('Fetch Weather')),
               SizedBox(height: 16.0),
               Text(
-                'Name: $cityname',
+                'City Name: $cityname',
                 style: TextStyle(fontSize: 20.0),
               ),
               Text(
