@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//import 'dart:math';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,62 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Weather App'),
+      home: weather(),
+    );
+  }
+}
+
+class weather extends StatefulWidget {
+  @override
+  _WeatherState createState() => _WeatherState();
+}
+
+class _WeatherState extends State<weather> {
+  final titleController = TextEditingController();
+  String cityname = "No Value Entered";
+  String weather_cond = "Not set";
+  void _setText() {
+    setState(() {
+      cityname = titleController.text;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Weather App'),
+      ),
+      body: Center(
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              TextFormField(
+                controller: titleController,
+                decoration: const InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText: 'Enter your city'),
+              ),
+              ElevatedButton(
+                  onPressed: _setText,
+                  /*style: ButtonStyle(
+                    backgroundColor:Colors.amber),*/
+                  child: const Text('Fetch Weather')),
+              SizedBox(height: 16.0),
+              Text(
+                'Name: $cityname',
+                style: TextStyle(fontSize: 20.0),
+              ),
+              Text(
+                'Temperature:',
+                style: TextStyle(fontSize: 20.0),
+              ),
+              Text(
+                'Weather Condition:',
+                style: TextStyle(fontSize: 20.0),
+              ),
+            ]),
+      ),
     );
   }
 }
