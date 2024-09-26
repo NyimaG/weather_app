@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'dart:math';
+import 'dart:math';
 
 void main() {
   runApp(const MyApp());
@@ -29,11 +29,14 @@ class weather extends StatefulWidget {
 
 class _WeatherState extends State<weather> {
   final titleController = TextEditingController();
-  String cityname = "No Value Entered";
-  String weather_cond = "Not set";
+  String cityname = " ";
+  String weather_cond = " ";
+  var temp = 0;
   void _setText() {
     setState(() {
       cityname = titleController.text;
+      weather_cond = "sunny";
+      temp = Random().nextInt(16) + 15;
     });
   }
 
@@ -64,11 +67,11 @@ class _WeatherState extends State<weather> {
                 style: TextStyle(fontSize: 20.0),
               ),
               Text(
-                'Temperature:',
+                'Temperature: $temp degrees celsius',
                 style: TextStyle(fontSize: 20.0),
               ),
               Text(
-                'Weather Condition:',
+                'Weather Condition: $weather_cond',
                 style: TextStyle(fontSize: 20.0),
               ),
             ]),
